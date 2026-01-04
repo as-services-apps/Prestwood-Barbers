@@ -9,8 +9,8 @@ const hours = [
   { day: 'Wednesday', time: '9:00 AM - 5:00 PM' },
   { day: 'Thursday', time: '9:00 AM - 5:00 PM' },
   { day: 'Friday', time: '9:00 AM - 5:00 PM' },
-  { day: 'Saturday', time: '9:00 AM - 4:00 PM' },
-  { day: 'Sunday', time: 'Closed' },
+  { day: 'Saturday', time: 'Closed', closed: true },
+  { day: 'Sunday', time: '10:00 AM - 5:00 PM' },
 ];
 
 const LocationSection = () => {
@@ -134,7 +134,7 @@ const LocationSection = () => {
                     transition={{ delay: 0.5 + index * 0.05, duration: 0.4 }}
                   >
                     <span className="font-body text-foreground">{schedule.day}</span>
-                    <span className={`font-body ${schedule.time === 'Closed' ? 'text-destructive' : 'text-primary'}`}>
+                    <span className={`font-body ${(schedule as any).closed ? 'text-destructive' : 'text-primary'}`}>
                       {schedule.time}
                     </span>
                   </motion.div>

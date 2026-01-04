@@ -1,10 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Scissors, Clock } from 'lucide-react';
-import haircutImage from '@/assets/haircut-service.jpg';
-import shaveImage from '@/assets/shave-service.jpg';
-import beardImage from '@/assets/beard-service.jpg';
+import { Scissors, Clock, Sparkles, Crown, Zap } from 'lucide-react';
 
 const services = [
   {
@@ -12,21 +9,21 @@ const services = [
     description: 'Precision cutting tailored to your style and face shape. Includes consultation, wash, cut, and styling.',
     price: 'From £15',
     duration: '30 min',
-    image: haircutImage,
+    icon: Scissors,
   },
   {
     name: 'Hot Towel Shave',
     description: 'Traditional straight razor shave with hot towels and premium products for the smoothest finish.',
     price: 'From £20',
     duration: '45 min',
-    image: shaveImage,
+    icon: Sparkles,
   },
   {
     name: 'Beard Trim & Style',
     description: 'Expert beard shaping, trimming, and conditioning to keep your facial hair looking sharp.',
     price: 'From £12',
     duration: '20 min',
-    image: beardImage,
+    icon: Crown,
   },
 ];
 
@@ -94,26 +91,22 @@ const ServicesSection = () => {
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
         >
-          {services.map((service, index) => (
-            <motion.div
-              key={service.name}
-              className="group relative bg-gradient-card rounded-lg overflow-hidden gold-border hover:shadow-gold transition-all duration-500"
-              variants={itemVariants}
-              whileHover={{ y: -8, scale: 1.02 }}
-            >
-              {/* Image */}
-              <div className="aspect-square overflow-hidden">
-                <img
-                  src={service.image}
-                  alt={service.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
-              </div>
+          {services.map((service, index) => {
+            const IconComponent = service.icon;
+            return (
+              <motion.div
+                key={service.name}
+                className="group relative bg-gradient-card rounded-lg overflow-hidden gold-border hover:shadow-gold transition-all duration-500 p-8"
+                variants={itemVariants}
+                whileHover={{ y: -8, scale: 1.02 }}
+              >
+                {/* Icon */}
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                  <IconComponent className="w-8 h-8 text-primary" />
+                </div>
 
-              {/* Content */}
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <div className="flex items-center justify-between mb-2">
+                {/* Content */}
+                <div className="flex items-center justify-between mb-3">
                   <h3 className="font-display text-xl font-semibold text-foreground">
                     {service.name}
                   </h3>
@@ -121,16 +114,21 @@ const ServicesSection = () => {
                     {service.price}
                   </span>
                 </div>
-                <p className="text-muted-foreground font-body text-sm mb-3 line-clamp-2">
+                <p className="text-muted-foreground font-body text-sm mb-4 leading-relaxed">
                   {service.description}
                 </p>
                 <div className="flex items-center gap-2 text-primary/80 text-sm">
                   <Clock className="w-4 h-4" />
                   <span className="font-body">{service.duration}</span>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+
+                {/* Decorative corner */}
+                <div className="absolute top-0 right-0 w-20 h-20 overflow-hidden">
+                  <div className="absolute -top-10 -right-10 w-20 h-20 bg-primary/5 rotate-45 group-hover:bg-primary/10 transition-colors" />
+                </div>
+              </motion.div>
+            );
+          })}
         </motion.div>
 
         {/* Additional Services */}

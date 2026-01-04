@@ -1,23 +1,44 @@
 import { motion } from 'framer-motion';
-import { ChevronDown, Star, Clock, MapPin } from 'lucide-react';
+import { ChevronDown, Star, Clock, MapPin, Scissors } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import heroImage from '@/assets/hero-barbershop.jpg';
 
 const HeroSection = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <motion.img
-          src={heroImage}
-          alt="Prestwood Barbers luxury interior"
-          className="w-full h-full object-cover"
-          initial={{ scale: 1.2 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5, ease: 'easeOut' }}
+      {/* Animated gradient background */}
+      <div className="absolute inset-0 bg-gradient-dark">
+        {/* Animated particles/elements */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/10 blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-primary/5 blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 right-1/3 w-64 h-64 rounded-full bg-amber-900/10 blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        
+        {/* Decorative scissors pattern */}
+        <div className="absolute inset-0 overflow-hidden opacity-[0.03]">
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute"
+              style={{
+                left: `${(i % 5) * 25 + 10}%`,
+                top: `${Math.floor(i / 5) * 25 + 10}%`,
+              }}
+              initial={{ rotate: 0, scale: 0.8 }}
+              animate={{ rotate: 360, scale: [0.8, 1, 0.8] }}
+              transition={{ duration: 20 + i * 2, repeat: Infinity, ease: 'linear' }}
+            >
+              <Scissors className="w-12 h-12 text-primary" />
+            </motion.div>
+          ))}
+        </div>
+        
+        {/* Grid pattern overlay */}
+        <div 
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage: 'linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)',
+            backgroundSize: '60px 60px'
+          }}
         />
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-hero-overlay" />
       </div>
 
       {/* Content */}
