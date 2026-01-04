@@ -117,7 +117,7 @@ const Footer = () => {
             © {currentYear} Prestwood Barbers. All rights reserved.
           </p>
           <p className="text-muted-foreground font-body text-sm">
-            Made by <span className="text-primary font-semibold">Angad Singh</span>
+            Made by <span className="text-primary font-semibold">AS Services</span>
           </p>
         </motion.div>
       </div>
