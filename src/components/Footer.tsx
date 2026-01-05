@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Scissors, Instagram, Facebook, MapPin, Phone } from 'lucide-react';
+import { Scissors, MapPin, Phone } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = 2026;
@@ -10,10 +10,9 @@ const Footer = () => {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
       
       <div className="container mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
+        <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <motion.div
-            className="md:col-span-2"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -29,28 +28,10 @@ const Footer = () => {
                 </span>
               </div>
             </div>
-            <p className="text-muted-foreground font-body leading-relaxed max-w-md mb-6">
+            <p className="text-muted-foreground font-body leading-relaxed max-w-md">
               Where tradition meets style. Experience the art of barbering at its finest 
               in the heart of Wolverhampton.
             </p>
-            
-            {/* Social icons */}
-            <div className="flex items-center gap-4">
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full gold-border flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full gold-border flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
-                aria-label="Facebook"
-              >
-                <Facebook className="w-5 h-5" />
-              </a>
-            </div>
           </motion.div>
 
           {/* Quick Links */}

@@ -1,52 +1,35 @@
 import { motion } from 'framer-motion';
-import { ChevronDown, Star, Clock, MapPin, Scissors } from 'lucide-react';
+import { Star, Clock, MapPin, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import heroVideo from '@/assets/hero-video.mp4';
 
 const HeroSection = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Animated gradient background */}
-      <div className="absolute inset-0 bg-gradient-dark">
-        {/* Animated particles/elements */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/10 blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-primary/5 blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 right-1/3 w-64 h-64 rounded-full bg-amber-900/10 blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
-        
-        {/* Decorative scissors pattern */}
-        <div className="absolute inset-0 overflow-hidden opacity-[0.03]">
-          {[...Array(20)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute"
-              style={{
-                left: `${(i % 5) * 25 + 10}%`,
-                top: `${Math.floor(i / 5) * 25 + 10}%`,
-              }}
-              initial={{ rotate: 0, scale: 0.8 }}
-              animate={{ rotate: 360, scale: [0.8, 1, 0.8] }}
-              transition={{ duration: 20 + i * 2, repeat: Infinity, ease: 'linear' }}
-            >
-              <Scissors className="w-12 h-12 text-primary" />
-            </motion.div>
-          ))}
-        </div>
-        
-        {/* Grid pattern overlay */}
-        <div 
-          className="absolute inset-0 opacity-[0.02]"
-          style={{
-            backgroundImage: 'linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)',
-            backgroundSize: '60px 60px'
-          }}
-        />
+    <section id="home" className="relative h-screen flex items-center overflow-hidden">
+      {/* Video background */}
+      <div className="absolute inset-0">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src={heroVideo} type="video/mp4" />
+        </video>
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-background/80 backdrop-blur-[2px]" />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 py-32">
+      <div className="relative z-10 container mx-auto px-6 py-16 md:py-32">
         <div className="max-w-2xl">
           {/* Rating badge */}
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full gold-border bg-background/20 backdrop-blur-sm mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full gold-border bg-background/40 backdrop-blur-sm mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
@@ -61,41 +44,45 @@ const HeroSection = () => {
 
           {/* Heading */}
           <motion.h1
-            className="font-display text-5xl md:text-7xl font-bold text-foreground mb-6 leading-tight"
+            className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-4 leading-tight"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.7 }}
           >
-            Crafting
-            <span className="text-gradient-gold block">Timeless Style</span>
+            Prestwood
+            <span className="text-gradient-gold block">Barbers</span>
           </motion.h1>
 
           {/* Subtitle */}
           <motion.p
-            className="text-cream-muted text-xl font-body leading-relaxed mb-8 max-w-lg"
+            className="text-cream-muted text-lg md:text-xl font-body leading-relaxed mb-6 max-w-lg"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.7 }}
           >
-            Experience the art of traditional barbering with a modern touch. 
-            Where precision meets passion, and every cut tells a story.
+            Premium grooming experience in Wolverhampton. 
+            Traditional craftsmanship meets modern style.
           </motion.p>
 
           {/* Quick info */}
           <motion.div
-            className="flex flex-wrap gap-6 mb-10"
+            className="flex flex-wrap gap-4 md:gap-6 mb-8"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.6 }}
           >
             <div className="flex items-center gap-2 text-foreground/80">
               <Clock className="w-5 h-5 text-primary" />
-              <span className="font-body">Open until 5PM</span>
+              <span className="font-body text-sm md:text-base">Mon-Fri 9-5</span>
             </div>
             <div className="flex items-center gap-2 text-foreground/80">
               <MapPin className="w-5 h-5 text-primary" />
-              <span className="font-body">Wolverhampton</span>
+              <span className="font-body text-sm md:text-base">Wolverhampton</span>
             </div>
+            <a href="tel:+447863611042" className="flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors">
+              <Phone className="w-5 h-5 text-primary" />
+              <span className="font-body text-sm md:text-base">07863 611042</span>
+            </a>
           </motion.div>
 
           {/* CTA Buttons */}
@@ -106,32 +93,14 @@ const HeroSection = () => {
             transition={{ delay: 1.1, duration: 0.6 }}
           >
             <Button variant="default" size="lg" className="bg-gradient-gold text-primary-foreground font-body tracking-wide shadow-gold hover:shadow-glow transition-all duration-300" asChild>
-              <a href="#services">View Services</a>
+              <a href="tel:+447863611042">Call Now</a>
             </Button>
             <Button variant="outline" size="lg" className="gold-border text-foreground hover:bg-primary/10 font-body tracking-wide" asChild>
-              <a href="#location">Get Directions</a>
+              <a href="#services">View Services</a>
             </Button>
           </motion.div>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.6 }}
-      >
-        <motion.a
-          href="#services"
-          className="flex flex-col items-center gap-2 text-foreground/60 hover:text-primary transition-colors"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-        >
-          <span className="text-xs font-body tracking-widest uppercase">Scroll</span>
-          <ChevronDown className="w-5 h-5" />
-        </motion.a>
-      </motion.div>
     </section>
   );
 };

@@ -28,12 +28,12 @@ const services = [
 ];
 
 const moreServices = [
-  { name: 'Skin Fade', price: 'From £18', duration: '40 min' },
-  { name: 'Kids Cut (Under 12)', price: 'From £10', duration: '20 min' },
-  { name: 'Senior Cut (65+)', price: 'From £12', duration: '25 min' },
-  { name: 'Hair & Beard Combo', price: 'From £25', duration: '50 min' },
-  { name: 'Head Shave', price: 'From £10', duration: '20 min' },
-  { name: 'Eyebrow Trim', price: 'From £5', duration: '10 min' },
+  { name: 'Skin Fade', price: 'From £18' },
+  { name: 'Kids Cut (Under 12)', price: 'From £10' },
+  { name: 'Senior Cut (65+)', price: 'From £12' },
+  { name: 'Hair & Beard Combo', price: 'From £25' },
+  { name: 'Head Shave', price: 'From £10' },
+  { name: 'Eyebrow Trim', price: 'From £5' },
 ];
 
 const containerVariants = {
@@ -150,15 +150,9 @@ const ServicesSection = () => {
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: 0.8 + index * 0.1, duration: 0.4 }}
               >
-                <div>
-                  <span className="font-body text-foreground group-hover:text-primary transition-colors">
-                    {service.name}
-                  </span>
-                  <div className="flex items-center gap-2 text-muted-foreground text-sm mt-1">
-                    <Clock className="w-3 h-3" />
-                    <span className="font-body">{service.duration}</span>
-                  </div>
-                </div>
+                <span className="font-body text-foreground group-hover:text-primary transition-colors">
+                  {service.name}
+                </span>
                 <span className="text-primary font-body font-semibold">
                   {service.price}
                 </span>
