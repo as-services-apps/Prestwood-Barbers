@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Scissors, Clock, Sparkles, Crown, Zap } from 'lucide-react';
+import { Scissors, Clock, Sparkles, Crown } from 'lucide-react';
+import barberAction1 from '@/assets/barber-action-1.jpg';
+import barberAction2 from '@/assets/barber-action-2.jpg';
 
 const services = [
   {
@@ -10,6 +12,7 @@ const services = [
     price: 'From £15',
     duration: '30 min',
     icon: Scissors,
+    image: barberAction1,
   },
   {
     name: 'Hot Towel Shave',
@@ -24,6 +27,7 @@ const services = [
     price: 'From £12',
     duration: '20 min',
     icon: Crown,
+    image: barberAction2,
   },
 ];
 
@@ -96,35 +100,50 @@ const ServicesSection = () => {
             return (
               <motion.div
                 key={service.name}
-                className="group relative bg-gradient-card rounded-lg overflow-hidden gold-border hover:shadow-gold transition-all duration-500 p-8"
+                className="group relative bg-gradient-card rounded-lg overflow-hidden gold-border hover:shadow-gold transition-all duration-500"
                 variants={itemVariants}
                 whileHover={{ y: -8, scale: 1.02 }}
               >
-                {/* Icon */}
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                  <IconComponent className="w-8 h-8 text-primary" />
-                </div>
+                {/* Image or Icon Header */}
+                {service.image ? (
+                  <div className="relative h-48 overflow-hidden">
+                    <img 
+                      src={service.image} 
+                      alt={service.name}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+                    <div className="absolute bottom-4 left-4">
+                      <div className="w-12 h-12 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center gold-border">
+                        <IconComponent className="w-6 h-6 text-primary" />
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="p-8 pb-0">
+                    <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                      <IconComponent className="w-8 h-8 text-primary" />
+                    </div>
+                  </div>
+                )}
 
                 {/* Content */}
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="font-display text-xl font-semibold text-foreground">
-                    {service.name}
-                  </h3>
-                  <span className="text-primary font-body font-semibold">
-                    {service.price}
-                  </span>
-                </div>
-                <p className="text-muted-foreground font-body text-sm mb-4 leading-relaxed">
-                  {service.description}
-                </p>
-                <div className="flex items-center gap-2 text-primary/80 text-sm">
-                  <Clock className="w-4 h-4" />
-                  <span className="font-body">{service.duration}</span>
-                </div>
-
-                {/* Decorative corner */}
-                <div className="absolute top-0 right-0 w-20 h-20 overflow-hidden">
-                  <div className="absolute -top-10 -right-10 w-20 h-20 bg-primary/5 rotate-45 group-hover:bg-primary/10 transition-colors" />
+                <div className="p-8 pt-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="font-display text-xl font-semibold text-foreground">
+                      {service.name}
+                    </h3>
+                    <span className="text-primary font-body font-semibold">
+                      {service.price}
+                    </span>
+                  </div>
+                  <p className="text-muted-foreground font-body text-sm mb-4 leading-relaxed">
+                    {service.description}
+                  </p>
+                  <div className="flex items-center gap-2 text-primary/80 text-sm">
+                    <Clock className="w-4 h-4" />
+                    <span className="font-body">{service.duration}</span>
+                  </div>
                 </div>
               </motion.div>
             );

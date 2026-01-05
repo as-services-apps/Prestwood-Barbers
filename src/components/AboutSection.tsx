@@ -1,12 +1,21 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Award, Users, Calendar, Heart } from 'lucide-react';
+import customerKid from '@/assets/customer-kid.webp';
+import customerSenior from '@/assets/customer-senior.webp';
+import customerStyle from '@/assets/customer-style.webp';
 
 const stats = [
   { icon: Users, value: '1000+', label: 'Happy Clients' },
   { icon: Calendar, value: '5+', label: 'Years Experience' },
   { icon: Award, value: '5.0', label: 'Google Rating' },
   { icon: Heart, value: '100%', label: 'Satisfaction' },
+];
+
+const galleryImages = [
+  { src: customerStyle, alt: 'Modern textured haircut' },
+  { src: customerKid, alt: 'Kids haircut specialist' },
+  { src: customerSenior, alt: 'Senior grooming service' },
 ];
 
 const AboutSection = () => {
@@ -23,7 +32,7 @@ const AboutSection = () => {
       </div>
 
       <div className="container mx-auto px-6 relative z-10" ref={ref}>
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
           {/* Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -36,8 +45,8 @@ const AboutSection = () => {
             </div>
             
             <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
-              A Cut Above
-              <span className="text-gradient-gold block">The Rest</span>
+              Where Style
+              <span className="text-gradient-gold block">Meets Precision</span>
             </h2>
             
             <p className="text-muted-foreground font-body text-lg leading-relaxed mb-6">
@@ -98,6 +107,43 @@ const AboutSection = () => {
             ))}
           </motion.div>
         </div>
+
+        {/* Gallery Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          <div className="text-center mb-10">
+            <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2">
+              Our Work
+            </h3>
+            <p className="text-muted-foreground font-body">Real results from real clients</p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            {galleryImages.map((image, index) => (
+              <motion.div
+                key={image.alt}
+                className="relative aspect-[3/4] rounded-lg overflow-hidden gold-border group"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ delay: 0.8 + index * 0.15, duration: 0.5 }}
+                whileHover={{ scale: 1.02 }}
+              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <span className="text-foreground font-body text-sm">{image.alt}</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
