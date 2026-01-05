@@ -17,11 +17,11 @@ const HeroSection = () => {
         >
           <source src={heroVideo} type="video/mp4" />
         </video>
-        {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-background/80 backdrop-blur-[2px]" />
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50" />
+        {/* Subtle overlay for readability - video more visible */}
+        <div className="absolute inset-0 bg-background/50" />
+        {/* Gradient overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-background/30" />
       </div>
 
       {/* Content */}
