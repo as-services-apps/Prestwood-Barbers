@@ -183,25 +183,6 @@ const ReviewsSection = () => {
           </div>
         </motion.div>
 
-        {/* Google Maps link */}
-        <motion.div
-          className="text-center mt-12"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.8, duration: 0.5 }}
-        >
-          <a
-            href="https://www.google.com/maps/place/Prestwood+Barbers/@52.611271,-2.0835285,20.64z/data=!4m8!3m7!1s0x48709f4eac6b17c3:0x4f8f737559e7b69b!8m2!3d52.6112116!4d-2.0834894!9m1!1b1!16s%2Fg%2F11rn790y4b"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-body transition-colors"
-          >
-            <span>View all reviews on Google</span>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-          </a>
-        </motion.div>
       </div>
     </section>
   );
