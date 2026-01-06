@@ -1,16 +1,16 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Scissors, Clock, Sparkles, Crown } from 'lucide-react';
+import { Scissors, Sparkles, Crown } from 'lucide-react';
 import barberAction1 from '@/assets/barber-action-1.jpg';
 import barberAction2 from '@/assets/barber-action-2.jpg';
+import hotTowelService from '@/assets/hot-towel-service.jpg';
 
 const services = [
   {
     name: 'Classic Haircut',
     description: 'Precision cutting tailored to your style and face shape. Includes consultation, wash, cut, and styling.',
     price: 'From £15',
-    duration: '30 min',
     icon: Scissors,
     image: barberAction1,
   },
@@ -18,14 +18,13 @@ const services = [
     name: 'Hot Towel Shave',
     description: 'Traditional straight razor shave with hot towels and premium products for the smoothest finish.',
     price: 'From £20',
-    duration: '45 min',
     icon: Sparkles,
+    image: hotTowelService,
   },
   {
     name: 'Beard Trim & Style',
     description: 'Expert beard shaping, trimming, and conditioning to keep your facial hair looking sharp.',
     price: 'From £12',
-    duration: '20 min',
     icon: Crown,
     image: barberAction2,
   },
@@ -120,8 +119,8 @@ const ServicesSection = () => {
                     </div>
                   </div>
                 ) : (
-                  <div className="p-8 pb-0">
-                    <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                  <div className="relative h-48 overflow-hidden bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
                       <IconComponent className="w-8 h-8 text-primary" />
                     </div>
                   </div>
@@ -137,13 +136,9 @@ const ServicesSection = () => {
                       {service.price}
                     </span>
                   </div>
-                  <p className="text-muted-foreground font-body text-sm mb-4 leading-relaxed">
+                  <p className="text-muted-foreground font-body text-sm leading-relaxed">
                     {service.description}
                   </p>
-                  <div className="flex items-center gap-2 text-primary/80 text-sm">
-                    <Clock className="w-4 h-4" />
-                    <span className="font-body">{service.duration}</span>
-                  </div>
                 </div>
               </motion.div>
             );

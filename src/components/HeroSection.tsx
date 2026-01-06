@@ -5,7 +5,7 @@ import heroVideo from '@/assets/hero-video.mp4';
 
 const HeroSection = () => {
   return (
-    <section id="home" className="relative h-screen flex items-center overflow-hidden">
+    <section id="home" className="relative min-h-[100svh] flex items-center overflow-hidden">
       {/* Video background */}
       <div className="absolute inset-0">
         <video
@@ -17,11 +17,11 @@ const HeroSection = () => {
         >
           <source src={heroVideo} type="video/mp4" />
         </video>
-        {/* Subtle overlay for readability - video more visible */}
-        <div className="absolute inset-0 bg-background/50" />
+        {/* Minimal overlay for readability - video more visible */}
+        <div className="absolute inset-0 bg-background/40" />
         {/* Gradient overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-background/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-background/20" />
       </div>
 
       {/* Content */}
