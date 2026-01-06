@@ -54,7 +54,7 @@ const ReviewsSection = () => {
   }, [emblaApi, onSelect]);
 
   return (
-    <section id="reviews" className="py-24 bg-background relative overflow-hidden">
+    <section id="reviews" className="py-24 mt-16 bg-background relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
       <div className="absolute top-40 left-10 w-64 h-64 rounded-full bg-primary/5 blur-3xl" />
