@@ -8,35 +8,37 @@ import hotTowelService from '@/assets/hot-towel-service.jpg';
 
 const services = [
   {
-    name: 'Classic Haircut',
-    description: 'Precision cutting tailored to your style and face shape. Includes consultation, wash, cut, and styling.',
-    price: 'From £15',
+    name: 'Normal Hair Cut',
+    description: 'Precision cutting tailored to your style and face shape. Includes consultation and styling.',
+    price: '£10.00',
     icon: Scissors,
     image: barberAction1,
   },
   {
-    name: 'Hot Towel Shave',
+    name: 'Hot Towel Shave & Steamer',
     description: 'Traditional straight razor shave with hot towels and premium products for the smoothest finish.',
-    price: 'From £20',
+    price: '£12.00',
     icon: Sparkles,
     image: hotTowelService,
   },
   {
-    name: 'Beard Trim & Style',
+    name: 'Beard Trim & Shape Up',
     description: 'Expert beard shaping, trimming, and conditioning to keep your facial hair looking sharp.',
-    price: 'From £12',
+    price: '£8.00',
     icon: Crown,
     image: barberAction2,
   },
 ];
 
 const moreServices = [
-  { name: 'Skin Fade', price: 'From £18' },
-  { name: 'Kids Cut (Under 12)', price: 'From £10' },
-  { name: 'Senior Cut (65+)', price: 'From £12' },
-  { name: 'Hair & Beard Combo', price: 'From £25' },
-  { name: 'Head Shave', price: 'From £10' },
-  { name: 'Eyebrow Trim', price: 'From £5' },
+  { name: 'One Grade Cut', price: '£8.00' },
+  { name: 'Skin Fade', price: '£12.00' },
+  { name: 'Child Normal Hair Cut (Under 10)', price: '£9.00' },
+  { name: 'OAP Cut', price: '£8.00' },
+  { name: 'Clean Face with Steamer', price: '£5.00' },
+  { name: 'Wax (Ear & Nose)', price: '£5.00' },
+  { name: 'Full Face Wax', price: '£8.00' },
+  { name: 'Full Service', price: '£25.00' },
 ];
 
 const containerVariants = {

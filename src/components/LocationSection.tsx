@@ -4,9 +4,9 @@ import { MapPin, Clock, Navigation } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const hours = [
-  { day: 'Monday', time: '9:00 AM - 5:00 PM' },
-  { day: 'Tuesday', time: '9:00 AM - 5:00 PM' },
-  { day: 'Wednesday', time: '9:00 AM - 5:00 PM' },
+  { day: 'Monday', time: '9:00 AM - 7:00 PM' },
+  { day: 'Tuesday', time: '9:00 AM - 7:00 PM' },
+  { day: 'Wednesday', time: '9:00 AM - 7:00 PM' },
   { day: 'Thursday', time: '9:00 AM - 5:00 PM' },
   { day: 'Friday', time: '9:00 AM - 5:00 PM' },
   { day: 'Saturday', time: 'Closed', closed: true },
