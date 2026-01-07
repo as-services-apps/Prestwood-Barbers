@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { Scissors } from 'lucide-react';
 
 interface LoadingScreenProps {
@@ -8,21 +8,32 @@ interface LoadingScreenProps {
 
 const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
   const [progress, setProgress] = useState(0);
+  const completedRef = useRef(false);
+  const callbackRef = useRef(onLoadingComplete);
+  
+  // Keep callback ref updated
+  callbackRef.current = onLoadingComplete;
 
   useEffect(() => {
+    let currentProgress = 0;
+    
     const timer = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(timer);
-          setTimeout(onLoadingComplete, 300);
-          return 100;
+      currentProgress += 2;
+      setProgress(currentProgress);
+      
+      if (currentProgress >= 100) {
+        clearInterval(timer);
+        if (!completedRef.current) {
+          completedRef.current = true;
+          setTimeout(() => {
+            callbackRef.current();
+          }, 300);
         }
-        return prev + 2;
-      });
+      }
     }, 40);
 
     return () => clearInterval(timer);
-  }, [onLoadingComplete]);
+  }, []);
 
   return (
     <motion.div
@@ -77,10 +88,9 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
           animate={{ opacity: 1, width: 256 }}
           transition={{ delay: 0.7, duration: 0.5 }}
         >
-          <motion.div
-            className="h-full bg-gradient-gold"
+          <div
+            className="h-full bg-gradient-gold transition-all duration-100"
             style={{ width: `${progress}%` }}
-            transition={{ duration: 0.1 }}
           />
         </motion.div>
 
